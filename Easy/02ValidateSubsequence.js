@@ -1,6 +1,5 @@
 let arr = [5, 1, 22, 25, 6, -1, 8, 10];
 let subArr = [1, 22, -1, 10];
-let newSubArr = [];
 
 function checkSubsequence(arr, subArr) {
   for (let i = 0; i < subArr.length - 1; i++) {
