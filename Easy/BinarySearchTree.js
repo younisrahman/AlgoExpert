@@ -1,5 +1,6 @@
 // Average: O(log(n)) time | O(log(n)) space
 // Worst: O(n) time | O(n) space
+
 function findClosestValueInBST(tree, target) {
   return findClosestValueInBSTHelper(tree, target, Infinity);
 }
