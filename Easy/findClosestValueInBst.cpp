@@ -40,7 +40,7 @@ Node *createBSTree()
     return root;
 }
 
-void printBT(const std::string &prefix, const Node *node, bool isLeft)
+void printBinaryTree(const std::string &prefix, const Node *node, bool isLeft)
 {
     if (node != nullptr)
     {
@@ -52,14 +52,14 @@ void printBT(const std::string &prefix, const Node *node, bool isLeft)
         std::cout << node->data << std::endl;
 
         // enter the next tree level - left and right branch
-        printBT(prefix + (isLeft ? "│   " : "    "), node->left, true);
-        printBT(prefix + (isLeft ? "│   " : "    "), node->right, false);
+        printBinaryTree(prefix + (isLeft ? "│   " : "    "), node->left, true);
+        printBinaryTree(prefix + (isLeft ? "│   " : "    "), node->right, false);
     }
 }
 
-void printBT(const Node *node)
+void printBinaryTree(const Node *node)
 {
-    printBT("", node, false);
+    printBinaryTree("", node, false);
 }
 
 int findClosestValueInBst(Node *tree, int target)
@@ -93,7 +93,7 @@ int main()
 
     Node *root = createBSTree();
 
-    printBT(root);
+    printBinaryTree(root);
     std::cout << findClosestValueInBst(root, 12) << std::endl;
     return 0;
 }
