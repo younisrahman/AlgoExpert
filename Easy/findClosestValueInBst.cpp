@@ -20,7 +20,7 @@ public:
     }
 };
 
-Node *createBSTree()
+Node *createBinarySearchTree()
 {
     Node *root = NULL;
     std::cout << "Enter Data : ";
@@ -32,10 +32,10 @@ Node *createBSTree()
 
     root = new Node(d);
     std::cout << "Enter left Data for " << d << std::endl;
-    root->left = createBSTree();
+    root->left = createBinarySearchTree();
 
     std::cout << "Enter right Data for " << d << std::endl;
-    root->right = createBSTree();
+    root->right = createBinarySearchTree();
 
     return root;
 }
@@ -91,7 +91,7 @@ int main()
 {
     FastIO;
 
-    Node *root = createBSTree();
+    Node *root = createBinarySearchTree();
 
     printBinaryTree(root);
     std::cout << findClosestValueInBst(root, 12) << std::endl;
