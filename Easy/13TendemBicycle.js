@@ -33,4 +33,4 @@ const fastest = true;
 
 const totalSpeed = tandemBicycle(redShirtSpeeds, blueShirtSpeeds, fastest);
 
-console.log(totalSpeed); // 22
+console.log(totalSpeed); // 32
