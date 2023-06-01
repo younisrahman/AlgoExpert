@@ -7,7 +7,7 @@ function tandemBicycle(redShirtSpeeds, blueShirtSpeeds, fastest) {
   // If fastest is true, sort the blueShirtSpeeds array in ascending order
   // Otherwise, sort the blueShirtSpeeds array in descending order
   if (fastest) {
-    blueShirtSpeeds.sort();
+    blueShirtSpeeds.sort((a, b) => a - b);
   } else {
     blueShirtSpeeds.sort(function (a, b) {
       return b - a;
@@ -27,10 +27,19 @@ function tandemBicycle(redShirtSpeeds, blueShirtSpeeds, fastest) {
   return totalSpeed;
 }
 
-const redShirtSpeeds = [5, 5, 3, 9, 2];
-const blueShirtSpeeds = [3, 6, 7, 2, 1];
-const fastest = true;
+// const redShirtSpeeds = [5, 5, 3, 9, 2];
+// const blueShirtSpeeds = [3, 6, 7, 2, 1];
+// const fastest = true;
+const data = {
+  blueShirtSpeeds: [3, 3, 4, 6, 1, 2, 5, 6, 34, 256, 123, 32],
+  fastest: true,
+  redShirtSpeeds: [1, 2, 1, 9, 12, 3, 1, 54, 21, 231, 32, 1],
+};
 
-const totalSpeed = tandemBicycle(redShirtSpeeds, blueShirtSpeeds, fastest);
+const totalSpeed = tandemBicycle(
+  data.redShirtSpeeds,
+  data.blueShirtSpeeds,
+  data.fastest
+);
 
 console.log(totalSpeed); // 32
