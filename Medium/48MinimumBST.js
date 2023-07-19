@@ -1,20 +1,47 @@
-function minHeightBst(array) {
-  // Write your code here.
-  return constructMinHeightBst(array, null, 0, array.length - 1);
-}
+// function minHeightBst(array) {
+//   // Write your code here.
+//   return constructMinHeightBst(array, null, 0, array.length - 1);
+// }
 
-function constructMinHeightBst(array, bst, startIdx, endIdx) {
-  if (startIdx > endIdx) {
-    return;
-  }
-  let midIdx = Math.floor((startIdx + endIdx) / 2);
-  let valueToAdd = array[midIdx];
-  if (bst === null) bst = new BST(valueToAdd);
-  else bst.insert(valueToAdd);
-  constructMinHeightBst(array, bst, startIdx, midIdx - 1);
-  constructMinHeightBst(array, bst, midIdx + 1, endIdx);
-  return bst;
-}
+// function constructMinHeightBst(array, bst, startIdx, endIdx) {
+//   if (startIdx > endIdx) {
+//     return;
+//   }
+//   let midIdx = Math.floor((startIdx + endIdx) / 2);
+//   let valueToAdd = array[midIdx];
+//   if (bst === null) bst = new BST(valueToAdd);
+//   else bst.insert(valueToAdd);
+//   constructMinHeightBst(array, bst, startIdx, midIdx - 1);
+//   constructMinHeightBst(array, bst, midIdx + 1, endIdx);
+//   return bst;
+// }
+
+// function minHeightBst(array) {
+//   // Write your code here.
+//   return constructMinHeightBst(array, null, 0, array.length - 1);
+// }
+
+// function constructMinHeightBst(array, bst, startIdx, endIdx) {
+//   if (startIdx > endIdx) {
+//     return;
+//   }
+//   let midIdx = Math.floor((startIdx + endIdx) / 2);
+//   let newBstNode = new BST(array[midIdx]);
+
+//   if (bst === null) bst = newBstNode;
+//   else {
+//     if (array[midIdx] < bst.value) {
+//       bst.left = newBstNode;
+//       bst = bst.left;
+//     } else {
+//       bst.right = newBstNode;
+//       bst = bst.right;
+//     }
+//   }
+//   constructMinHeightBst(array, bst, startIdx, midIdx - 1);
+//   constructMinHeightBst(array, bst, midIdx + 1, endIdx);
+//   return bst;
+// }
 
 class BST {
   constructor(value) {
