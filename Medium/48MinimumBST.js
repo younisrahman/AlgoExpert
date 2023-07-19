@@ -43,6 +43,23 @@
 //   return bst;
 // }
 
+function minHeightBst(array) {
+  // Write your code here.
+  return constructMinHeightBst(array, 0, array.length - 1);
+}
+
+function constructMinHeightBst(array, startIdx, endIdx) {
+  if (startIdx > endIdx) {
+    return null;
+  }
+  let midIdx = Math.floor((startIdx + endIdx) / 2);
+  let bst = new BST(array[midIdx]);
+
+  bst.left = constructMinHeightBst(array, startIdx, midIdx - 1);
+  bst.right = constructMinHeightBst(array, midIdx + 1, endIdx);
+  return bst;
+}
+
 class BST {
   constructor(value) {
     this.value = value;
