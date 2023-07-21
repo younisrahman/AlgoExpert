@@ -34,19 +34,29 @@
 //   inOrderTraversal(tree.left, sortedNodeValue, k);
 // }
 
-function findKthLargestValueInBst(tree, k) {
-  // Write your code here.
-  let sortedNodeValue = [];
-  inOrderTraversal(tree, sortedNodeValue, k);
-  return sortedNodeValue[k - 1];
+class TreeInfo {
+  constructor(numberOfNodesVisited, lastVisitedNodeValue) {
+    this.numberOfNodesVisited = numberOfNodesVisited;
+    this.lastVisitedNodeValue = lastVisitedNodeValue;
+  }
 }
 
-function inOrderTraversal(tree, sortedNodeValue, k) {
-  if (tree === null || sortedNodeValue.length === k) {
+function findKthLargestValueInBst(tree, k) {
+  let treeInfo = new TreeInfo(0, -1);
+  reverseInOrderTraversal(tree, k, treeInfo);
+  return treeInfo.lastVisitedNodeValue;
+}
+
+function reverseInOrderTraversal(tree, k, treeInfo) {
+  if (tree === null || treeInfo.numberOfNodesVisited >= k) {
     return;
   }
 
-  inOrderTraversal(tree.right, sortedNodeValue, k);
-  sortedNodeValue.push(tree.value);
-  inOrderTraversal(tree.left, sortedNodeValue, k);
+  reverseInOrderTraversal(tree.right, k, treeInfo);
+
+  if (treeInfo.numberOfNodesVisited < k) {
+    treeInfo.numberOfNodesVisited = treeInfo.numberOfNodesVisited + 1;
+    treeInfo.lastVisitedNodeValue = tree.value;
+    reverseInOrderTraversal(tree.left, k, treeInfo);
+  }
 }
