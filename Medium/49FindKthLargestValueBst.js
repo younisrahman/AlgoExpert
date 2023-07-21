@@ -34,6 +34,7 @@
 //   inOrderTraversal(tree.left, sortedNodeValue, k);
 // }
 
+// O(k+h) space(h)
 class TreeInfo {
   constructor(numberOfNodesVisited, lastVisitedNodeValue) {
     this.numberOfNodesVisited = numberOfNodesVisited;
