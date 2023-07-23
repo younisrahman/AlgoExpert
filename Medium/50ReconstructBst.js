@@ -15,10 +15,11 @@ function reconstructBst(preOrderTraversalValues) {
   let currentValue = preOrderTraversalValues[0];
   let rightSubtreeRootIdx = preOrderTraversalValues.length;
 
-  for (let i = 1; i < preOrderTraversalValues.length; i++) {
-    value = preOrderTraversalValues[i];
+  for (let idx = 1; idx < preOrderTraversalValues.length; idx++) {
+    const value = preOrderTraversalValues[idx];
     if (value >= currentValue) {
-      rightSubtreeRootIdx++;
+      rightSubtreeRootIdx = idx;
+      break;
     }
   }
 
@@ -26,10 +27,7 @@ function reconstructBst(preOrderTraversalValues) {
     preOrderTraversalValues.slice(1, rightSubtreeRootIdx)
   );
   let rightSubtree = reconstructBst(
-    preOrderTraversalValues.slice(
-      rightSubtreeRootIdx,
-      preOrderTraversalValues.length
-    )
+    preOrderTraversalValues.slice(rightSubtreeRootIdx)
   );
 
   return new BST(currentValue, leftSubtree, rightSubtree);
