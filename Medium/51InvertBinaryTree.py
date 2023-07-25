@@ -1,14 +1,23 @@
-# O(n) time | O(n)space
+# # O(n) time | O(n)space
+# def invertBinaryTree(tree):
+#     # Write your code here.
+#     queue = [tree]
+#     while len(queue):
+#         current = queue.pop(0)
+#         if current is None:
+#             continue
+#         swapLeftAndRight(current)
+#         queue.append(current.left)
+#         queue.append(current.right)
+
+# # O(n) time | O(d)space
 def invertBinaryTree(tree):
-    # Write your code here.
-    queue = [tree]
-    while len(queue):
-        current = queue.pop(0)
-        if current is None:
-            continue
-        swapLeftAndRight(current)
-        queue.append(current.left)
-        queue.append(current.right)
+    if tree == None:
+        return
+
+    swapLeftAndRight(tree)
+    invertBinaryTree(tree.left)
+    invertBinaryTree(tree.right)
 
 
 def swapLeftAndRight(tree):

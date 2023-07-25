@@ -13,7 +13,13 @@
 // }
 
 // O(n) time | O(d) space
-function invertBinaryTree(tree) {}
+function invertBinaryTree(tree) {
+  if (tree === null) return;
+
+  swapLeftAndRight(tree);
+  invertBinaryTree(tree.left);
+  invertBinaryTree(tree.right);
+}
 function swapLeftAndRight(tree) {
   let temp = tree.left;
   tree.left = tree.right;
