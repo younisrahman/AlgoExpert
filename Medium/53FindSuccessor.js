@@ -8,31 +8,56 @@ class BinaryTree {
   }
 }
 
+// function findSuccessor(tree, node) {
+//   let inOrderTraversalOrder = getInOrderTraversalOrder(tree);
+
+//   for (const [idx, currentNode] of inOrderTraversalOrder.entries()) {
+//     if (currentNode != node) {
+//       continue;
+//     }
+//     if (idx === inOrderTraversalOrder.length - 1) {
+//       return null;
+//     }
+
+//     return inOrderTraversalOrder[idx + 1];
+//   }
+// }
+
+// function getInOrderTraversalOrder(node, orders = []) {
+//   if (node == null) {
+//     return orders;
+//   }
+
+//   getInOrderTraversalOrder(node.left, orders);
+//   orders.push(node);
+//   getInOrderTraversalOrder(node.right, orders);
+
+//   return orders;
+// }
+
+//  O(n) time | O(1) space
 function findSuccessor(tree, node) {
-  let inOrderTraversalOrder = getInOrderTraversalOrder(tree);
-
-  for (const [idx, currentNode] of inOrderTraversalOrder.entries()) {
-    if (currentNode != node) {
-      continue;
-    }
-    if (idx === inOrderTraversalOrder.length - 1) {
-      return null;
-    }
-
-    return inOrderTraversalOrder[idx + 1];
-  }
+  if (node.right != null) return getLeftMostChild(node);
+  return getRightMostChild(node);
 }
 
-function getInOrderTraversalOrder(node, orders = []) {
-  if (node == null) {
-    return orders;
+function getLeftMostChild(node) {
+  let currentNode = node.right;
+  while (currentNode.left != null) {
+    currentNode = currentNode.left;
   }
+  return currentNode;
+}
 
-  getInOrderTraversalOrder(node.left, orders);
-  orders.push(node);
-  getInOrderTraversalOrder(node.right, orders);
-
-  return orders;
+function getRightMostChild(node) {
+  let currentNode = node;
+  while (
+    currentNode.parent != null &&
+    currentNode.parent.right == currentNode
+  ) {
+    currentNode = currentNode.parent;
+  }
+  return currentNode.parent;
 }
 
 // Do not edit the lines below.
