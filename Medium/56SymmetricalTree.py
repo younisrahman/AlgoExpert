@@ -26,3 +26,13 @@ def symmetricalTree(tree):
         stackRight.append(right.left)
 
     return True
+
+
+def symmetricalTree(tree):
+    return treeAreMirrored(tree.left, tree.right)
+
+
+def treeAreMirrored(left, right):
+    if left is not None and right is not None and left.value == right.value:
+        return treeAreMirrored(left.left, right.right) and treeAreMirrored(left.right, right.left)
+    return left == right

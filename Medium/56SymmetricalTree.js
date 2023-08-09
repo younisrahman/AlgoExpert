@@ -32,3 +32,18 @@ function symmetricalTree(tree) {
 
 // Do not edit the line below.
 exports.symmetricalTree = symmetricalTree;
+
+function symmetricalTree(tree) {
+  return treesAreMirrored(tree.left, tree.right);
+}
+
+function treesAreMirrored(left, right) {
+  if (left != null && right != null && left.value == right.value) {
+    return (
+      treesAreMirrored(left.left, right.right) &&
+      treesAreMirrored(left.right, right.left)
+    );
+  }
+
+  return left == right;
+}
