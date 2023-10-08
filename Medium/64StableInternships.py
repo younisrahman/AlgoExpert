@@ -6,7 +6,7 @@ def stableInternships(interns, teams):
     teamMaps = []
     for team in teams:
         rank = {}
-        for i, internNum in team:
+        for i, internNum in enumerate(team):
             rank[internNum] = i
         teamMaps.append(rank)
 
@@ -32,5 +32,5 @@ def stableInternships(interns, teams):
             freeInterns.append(internNum)
 
     matches = [[internNum, teamNum]
-               for teamNum, inrernNum in chosenInterns.items()]
+               for teamNum, internNum in chosenInterns.items()]
     return matches
